@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Collision : MonoBehaviour
@@ -16,5 +17,10 @@ public class Collision : MonoBehaviour
     {
         _tempPos = resetPos;
         collision.transform.position = resetPos;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }

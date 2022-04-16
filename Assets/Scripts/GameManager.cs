@@ -3,11 +3,27 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _singleton;
+
+    public static GameManager Singleton
+    {
+        get => _singleton;
+        private set
+        {
+            if (_singleton == null)
+            {
+                _singleton = value;
+                return;
+            }
+
+            Destroy(value.gameObject);
+        }
+    }
+
     public SnapController controller;
-    
+
     public int totalMoves;
     public Text movesText;
-    public static GameManager singleton;
     public int scores;
     public bool win = false;
     public bool lose = false;
@@ -16,39 +32,37 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(singleton == null)
-        {
-            singleton = this;
-        }
+        Singleton = this;
     }
+
     private void Update()
     {
         var moves = controller.moves;
         movesText.text = "Moves  " + moves + "/" + totalMoves;
-        Debug.Log("Scores = " + scores);
-        if(scores>=18)
+        // Debug.Log("Scores = " + scores);
+        if (scores >= 18)
         {
             win = true;
-            
-
         }
+
         if (moves >= 30)
         {
             lose = true;
-            
-
         }
-        if(win)
-        { winText.SetActive(true); }
-        else if(lose)
-        { loseText.SetActive(true); ; }
+
+        if (win)
+        {
+            winText.SetActive(true);
+        }
+        else if (lose)
+        {
+            loseText.SetActive(true);
+            ;
+        }
+
         if (win || lose)
         {
             controller.enabled = false;
         }
-
-        
     }
-
-    
 }

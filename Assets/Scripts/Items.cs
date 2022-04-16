@@ -43,11 +43,11 @@ public class Items : MonoBehaviour
             transform1.position = new Vector2(transform.position.x, -3.5f);
         }
     }
-
+    
     private void OnMouseDrag()
     {
-        if (GameManager.singleton.win == true) return;
-        if (GameManager.singleton.lose == true) return;
+        if (GameManager.Singleton.win == true) return;
+        if (GameManager.Singleton.lose == true) return;
         if (!isMoving) return;
         if (_isPositioned) return;
         Vector3 mousePos;
@@ -58,8 +58,8 @@ public class Items : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (GameManager.singleton.win == true) return;
-        if (GameManager.singleton.lose == true) return;
+        if (GameManager.Singleton.win == true) return;
+        if (GameManager.Singleton.lose == true) return;
         var mousePos = Camera.main!.ScreenToWorldPoint(Input.mousePosition);
 
 
@@ -72,8 +72,8 @@ public class Items : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (GameManager.singleton.win == true) return;
-        if (GameManager.singleton.lose == true) return;
+        if (GameManager.Singleton.win == true) return;
+        if (GameManager.Singleton.lose == true) return;
         if (Mathf.Abs(transform.position.x - itemSlot.transform.position.x) <= 1.0f &&
             Mathf.Abs(transform.position.y - itemSlot.transform.position.y) <= 1.0f)
         {
@@ -81,7 +81,7 @@ public class Items : MonoBehaviour
             transform.position = new Vector2(position.x, position.y);
             if (transform.position == itemSlot.transform.position)
             {
-                GameManager.singleton.scores++;
+                GameManager.Singleton.scores++;
                 _isPositioned = true;
                 GetComponent<BoxCollider2D>().enabled = false;
                 Debug.Log("Scores = " + _score);
