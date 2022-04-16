@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +8,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
-            eventData.pointerDrag.GetComponent<Transform>().position = this.GetComponent<Transform>().position;
+            eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
         }
     }
 }

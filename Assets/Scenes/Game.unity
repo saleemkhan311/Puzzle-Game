@@ -2769,7 +2769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructions: {fileID: 8300000, guid: 696c890beba80904b9c18ddede1b16d6, type: 3}
-  Seek: {fileID: 1887410033}
+  seek: {fileID: 0}
   button: {fileID: 1406229588}
   play: {fileID: 21300000, guid: 2e18180a748df764b884d85a473b4fe6, type: 3}
   pause: {fileID: 21300000, guid: 997dd3432b9ee294b8ad03e6f1cd324e, type: 3}
@@ -2984,26 +2984,8 @@ MonoBehaviour:
   - {fileID: 132732512}
   - {fileID: 1218638}
   - {fileID: 1888572213}
-  DragAbles:
-  - {fileID: 2116174202}
-  - {fileID: 637939857}
-  - {fileID: 2084943897}
-  - {fileID: 1311828991}
-  - {fileID: 1253484155}
-  - {fileID: 997788109}
-  - {fileID: 1391845399}
-  - {fileID: 1608506735}
-  - {fileID: 868765389}
-  - {fileID: 1615935112}
-  - {fileID: 1361805716}
-  - {fileID: 1061840435}
-  - {fileID: 410609259}
-  - {fileID: 2075741769}
-  - {fileID: 2016593831}
-  - {fileID: 1471027010}
-  - {fileID: 1220898015}
-  - {fileID: 1501253244}
-  Moves: 0
+  dragAbles: []
+  moves: 0
 --- !u!4 &1220973864
 Transform:
   m_ObjectHideFlags: 0
@@ -3404,7 +3386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructions: {fileID: 8300000, guid: 696c890beba80904b9c18ddede1b16d6, type: 3}
-  Seek: {fileID: 1266026700}
+  seek: {fileID: 0}
   button: {fileID: 1977360113}
   play: {fileID: 21300000, guid: 2e18180a748df764b884d85a473b4fe6, type: 3}
   pause: {fileID: 21300000, guid: 997dd3432b9ee294b8ad03e6f1cd324e, type: 3}
@@ -6535,7 +6517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructions: {fileID: 8300000, guid: 696c890beba80904b9c18ddede1b16d6, type: 3}
-  Seek: {fileID: 1800307960}
+  seek: {fileID: 0}
   button: {fileID: 135315400}
   play: {fileID: 21300000, guid: 2e18180a748df764b884d85a473b4fe6, type: 3}
   pause: {fileID: 21300000, guid: 997dd3432b9ee294b8ad03e6f1cd324e, type: 3}
@@ -6666,12 +6648,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1220973863}
   totalMoves: 30
-  MovesText: {fileID: 943602263}
+  movesText: {fileID: 943602263}
   scores: 0
   win: 0
   lose: 0
   winText: {fileID: 1160804291}
-  LoseText: {fileID: 910164171}
+  loseText: {fileID: 910164171}
 --- !u!4 &2063135287
 Transform:
   m_ObjectHideFlags: 0

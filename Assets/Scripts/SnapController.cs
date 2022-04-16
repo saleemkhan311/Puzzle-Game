@@ -1,19 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SnapController  : Collision
 {
     public List<Transform> snapePoints;
-    public List<Items> DragAbles;
-    float snapeRange = 1.0f;
+    public List<Items> dragAbles;
+    private float snapeRange = 1.0f;
     
     
-    public int Moves;
-    void Start()
+    public int moves;
+    private void Start()
     {
        
-        foreach (Items items in DragAbles )
+        foreach (var items in dragAbles )
         {
             items.dragEndedCallBack = OnDrageEnded;
         }
@@ -21,16 +20,16 @@ public class SnapController  : Collision
         Debug.Log(resetPos);
     }
 
-    void OnDrageEnded(Items items)
+    private void OnDrageEnded(Items items)
     {
 
         
         Transform closestSnapePoint = null;
-        float closestDistance = -1; 
+        var closestDistance = -1f; 
 
-        foreach(Transform snapePoint in snapePoints)
+        foreach(var snapePoint in snapePoints)
         {
-           float currentDistance = Vector2.Distance(items.transform.position, snapePoint.transform.position);
+           var currentDistance = Vector2.Distance(items.transform.position, snapePoint.transform.position);
             if(closestSnapePoint == null || currentDistance< closestDistance )
             {
                 closestSnapePoint = snapePoint;
@@ -42,10 +41,7 @@ public class SnapController  : Collision
         if(closestSnapePoint != null && closestDistance <= snapeRange)
         {
             items.transform.position = closestSnapePoint.position;
-           
-            Moves++;
-           
-
+            moves++;
         }
     }
 

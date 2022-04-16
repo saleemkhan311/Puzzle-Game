@@ -1,53 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioPlayer : MonoBehaviour
 {
     public AudioClip instructions;
-    [SerializeField] Image Seek;
-    [SerializeField] Button button;
-    [SerializeField] Sprite play;
-    [SerializeField] Sprite pause;
-    AudioSource Source;
-    bool Pause = true;
-    float timer = 0;
-    void Start()
+    [SerializeField] private Image seek;
+    [SerializeField] private Button button;
+    [SerializeField] private Sprite play;
+    [SerializeField] private Sprite pause;
+    private AudioSource _source;
+    private bool _pause = true;
+    private float _timer = 0;
+    private void Start()
     {
-        Source = GetComponent<AudioSource>();
+        _source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Source.clip = instructions;
+        _source.clip = instructions;
 
-        float value = Source.time / Source.clip.length;
+        var value = _source.time / _source.clip.length;
         
-        timer += Time.deltaTime;
-        Seek.fillAmount = Mathf.Lerp(Seek.fillAmount, value , timer);
+        _timer += Time.deltaTime;
+        seek.fillAmount = Mathf.Lerp(seek.fillAmount, value , _timer);
         
 
     }
 
     public void PlayInstruction()
     {
-        if(Pause)
+        switch (_pause)
         {
-            Pause = false;
-            button.image.sprite = pause;
-            Source.Play();
-            Debug.Log("Pause");
+            case true:
+                button.image.sprite = pause;
+                _source.Play();
+                Debug.Log("Pause");
+                break;
+            case false:
+                _pause = true;
+                button.image.sprite = play;
+                Debug.Log("Play");
+                _source.Pause();
+                break;
         }
-        else if(!Pause)
-        {
-            Pause = true;
-            button.image.sprite = play;
-            Debug.Log("Play");
-            Source.Pause();
-        }
-
-        
     }
 }
