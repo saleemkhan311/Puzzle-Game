@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IDropHandler
+public class ItemSlot : MonoBehaviour
 {
     private Item _item;
 
@@ -21,16 +21,22 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     {
         _item = item;
     }
-    
-    private void OnTriggerEnter2D(Collider2D col)
+
+    private void OnTriggerStay2D(Collider2D col)
     {
+        
         var item = col.GetComponent<Item>();
         if (item == null) return;
         if (item == _item) return;
         var slot = item.spot;
-        item.newSpot = transform;
-        // _item.transform.position = slot.position;
-        item.transform.Translate(slot.position);
+        if(Input.GetMouseButtonUp(0))
+        {
+            
+            
+            item.newSpot = transform;
+            _item.transform.position = slot.position;
+            item.transform.Translate(slot.position);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

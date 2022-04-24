@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public SnapController controller;
+    //public SnapController controller;
 
     public int totalMoves;
     public Text movesText;
@@ -37,19 +37,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        var moves = controller.moves;
-        movesText.text = "Moves  " + moves + "/" + totalMoves;
+       // var moves = controller.moves;
+       // movesText.text = "Moves  " + moves + "/" + totalMoves;
         // Debug.Log("Scores = " + scores);
         if (scores >= 18)
         {
             win = true;
         }
 
-        if (moves >= 30)
-        {
-            lose = true;
-        }
-
+        
         if (win)
         {
             winText.SetActive(true);
@@ -62,7 +58,7 @@ public class GameManager : MonoBehaviour
 
         if (win || lose)
         {
-            controller.enabled = false;
+            //controller.enabled = false;
         }
     }
 }

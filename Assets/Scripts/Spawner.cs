@@ -4,6 +4,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform spawnParent;
+    [SerializeField] Transform slotsSpawnParent;
     [SerializeField] private GameObject itemSpotPrefab;
     [SerializeField] private GameObject itemPrefab;
 
@@ -18,16 +19,19 @@ public class Spawner : MonoBehaviour
         // loading resources
         LoadLevel(1, 3, 6);
     }
-
+    private void Update()
+    {
+        
+    }
     public void LoadLevel(int level, int row, int col)
     {
         for (var i = 0; i < row; i++)
         {
             for (var j = 0; j < col; j++)
             {
-                var slot = Instantiate(itemSpotPrefab, spawnParent).GetComponent<ItemSlot>();
+                var slot = Instantiate(itemSpotPrefab, slotsSpawnParent).GetComponent<ItemSlot>();
                 var pos = new Vector3(initialX + j * gapeX, initialY + i * gapeY, 0f);
-                Debug.Log(pos);
+               /* Debug.Log(pos);*/
                 slot.transform.localPosition = pos;
                 _slots.Add(slot);
             }
@@ -39,7 +43,7 @@ public class Spawner : MonoBehaviour
         {
             var item = Instantiate(itemPrefab, spawnParent).GetComponent<Item>();
             if (item == null) return;
-            item.Setup((Sprite) sprites[i%sprites.Length],_slots[i].transform);
+            item.Setup((Sprite) sprites[i%sprites.Length], _slots[i].transform);
             item.UpdateRenderer();
             _slots[i].SetItem(item);
             item.transform.position = _slots[i].transform.position;
