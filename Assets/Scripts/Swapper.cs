@@ -56,6 +56,7 @@ public class Swapper : MonoBehaviour
                 (selectedItem.spot, swapItem.spot) = (swapItem.spot, selectedItem.spot);
                 selectedItem.Rest();
                 swapItem.Rest();
+                GameManager.Singleton.moves++;
                 selectedItem = null;
             }
             else

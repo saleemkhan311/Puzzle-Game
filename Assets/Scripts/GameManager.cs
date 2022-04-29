@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int totalMoves;
     public Text movesText;
     public int scores;
+    public int moves;
     public bool win = false;
     public bool lose = false;
     [SerializeField] private GameObject winText;
@@ -37,9 +38,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-       // var moves = controller.moves;
-       // movesText.text = "Moves  " + moves + "/" + totalMoves;
-        // Debug.Log("Scores = " + scores);
+       
+        movesText.text = "Moves  " + moves + "/" + totalMoves;
         if (scores >= 18)
         {
             win = true;
@@ -52,8 +52,7 @@ public class GameManager : MonoBehaviour
         }
         else if (lose)
         {
-            loseText.SetActive(true);
-            ;
+            loseText.SetActive(true);  
         }
 
         if (win || lose)

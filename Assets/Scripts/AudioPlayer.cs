@@ -15,8 +15,6 @@ public class AudioPlayer : MonoBehaviour
     {
         _source = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
     private void Update()
     {
         _source.clip = instructions;
