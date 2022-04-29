@@ -5,10 +5,7 @@ public class Item : MonoBehaviour
     
     private Sprite _sprite;
 
-    private bool _isMoving;
-    Vector2 InitialPos;
     public Transform spot;
-    public Transform newSpot;
     
     public void Setup(Sprite sprite, Transform spotTransform)
     {
@@ -21,48 +18,17 @@ public class Item : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = _sprite;
     }
 
-    private void Start()
+    public void Rest()
     {
-        InitialPos = transform.position;
-    }
-    private void Update()
-    {
-        if (_isMoving == true)
-        {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector2(mousePos.x, mousePos.y);
-        }
-    }
-    private void OnMouseDrag()
-    {
-       
-        
-        _isMoving = true;
+        transform.position = spot.position;
     }
 
-    private void OnMouseDown()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (GameManager.Singleton.win == true) return;
-        if (GameManager.Singleton.lose == true) return;
-        Debug.Log("Drag");
-        _isMoving = true;
+        if(Swapper.Singleton.selectedItem == null) return;
+        if (string.Equals(Swapper.Singleton.selectedItem.name, col.name)) return;
+        Debug.Log($"On Trigger Enter {col.name}");
+        Swapper.Singleton.swapItem = col.GetComponent<Item>();
     }
 
-    private void OnMouseUp()
-    {
-
-        float distance = Vector2.Distance(transform.position, spot.position);
-        if (distance < 0.5f)
-        {
-            transform.position = spot.position;
-            InitialPos = transform.position;
-        }
-        //else { transform.position = InitialPos; }
-        
-
-        _isMoving = false;
-        if (newSpot == null) return;
-        
-        
-    }
 }

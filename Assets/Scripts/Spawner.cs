@@ -45,7 +45,8 @@ public class Spawner : MonoBehaviour
             if (item == null) return;
             item.Setup((Sprite) sprites[i%sprites.Length], _slots[i].transform);
             item.UpdateRenderer();
-            _slots[i].SetItem(item);
+            // _slots[i].SetItem(item);
+            item.name = $"item {i}";
             item.transform.position = _slots[i].transform.position;
         }
     }
