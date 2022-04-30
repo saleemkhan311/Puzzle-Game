@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
 
     private List<ItemSlot> _slots = new();
 
+
     private void Start()
     {
         // loading resources

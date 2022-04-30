@@ -401,8 +401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -52.1, y: 0.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -50.040638, y: 0.099999994}
+  m_SizeDelta: {x: 147.8064, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &183948907
 GameObject:
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d90bdc718d5b0641a40ac524c3d3c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructions: {fileID: 8300000, guid: 696c890beba80904b9c18ddede1b16d6, type: 3}
+  instructions: {fileID: 8300000, guid: 624891099f06a9247aff931250c99241, type: 3}
   seek: {fileID: 1800307960}
   button: {fileID: 135315400}
   play: {fileID: 21300000, guid: 2e18180a748df764b884d85a473b4fe6, type: 3}
@@ -1433,6 +1433,7 @@ MonoBehaviour:
   lose: 0
   winText: {fileID: 1160804291}
   loseText: {fileID: 910164171}
+  ItemParent: {fileID: 686454144}
 --- !u!4 &2063135287
 Transform:
   m_ObjectHideFlags: 0

@@ -23,7 +23,12 @@ public class AudioPlayer : MonoBehaviour
         
         _timer += Time.deltaTime;
         seek.fillAmount = Mathf.Lerp(seek.fillAmount, value , _timer);
+        var _seconds = _source.time;
         
+        if(_seconds ==0)
+        {
+            button.image.sprite = play;
+        }
 
     }
 
@@ -32,6 +37,7 @@ public class AudioPlayer : MonoBehaviour
         switch (_pause)
         {
             case true:
+                _pause = false;
                 button.image.sprite = pause;
                 _source.Play();
                 Debug.Log("Pause");
