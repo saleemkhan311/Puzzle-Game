@@ -75,9 +75,17 @@ public class Swapper : MonoBehaviour
 
             if (swapItem != null)
             {
+                GameManager.Singleton.moves++;
                 (selectedItem.spot, swapItem.spot) = (swapItem.spot, selectedItem.spot);
                 var pair = new Pair(selectedItem.name, swapItem.name);
-                var instructionMatch = _instructions.Any(instruction => instruction.Compare(pair));
+                var instructionMatch = false;
+                // _instructions.Any(instruction => instruction.Compare(pair));
+                foreach (var instruction in _instructions.Where(instruction => instruction.Compare(pair)))
+                {
+                    instructionMatch = true;
+                    _instructions.Remove(instruction);
+                    break;
+                }
                 if (instructionMatch)
                 {
                     Debug.Log("Instruction Matched");
@@ -86,7 +94,6 @@ public class Swapper : MonoBehaviour
 
                 selectedItem.Rest();
                 swapItem.Rest();
-                GameManager.Singleton.moves++;
                 selectedItem = null;
             }
             else
