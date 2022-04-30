@@ -30,7 +30,6 @@ public class Spawner : MonoBehaviour
                 var pos = new Vector3(initialX + j * gapeX, initialY + i * gapeY, 0f);
                 /* Debug.Log(pos);*/
                 slot.transform.localPosition = pos;
-                slot.name = $"slot {i}";
                 _slots.Add(slot);
             }
         }
@@ -45,6 +44,7 @@ public class Spawner : MonoBehaviour
             item.UpdateRenderer();
             // _slots[i].SetItem(item);
             item.name = $"item {i}";
+            _slots[i].name = $"slot {i}";
             item.transform.position = _slots[i].transform.position;
         }
     }
