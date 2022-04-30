@@ -27,7 +27,7 @@ public class Item : MonoBehaviour
         if(Swapper.Singleton.selectedItem == null) return;
         if (string.Equals(Swapper.Singleton.selectedItem.name, col.name)) return;
       
-        if(Input.GetMouseButtonUp(0))
+        // if(Input.GetMouseButtonUp(0))
             Swapper.Singleton.swapItem = col.GetComponent<Item>();
     }
 
