@@ -49,11 +49,12 @@ public class Swapper : MonoBehaviour
     private void Awake()
     {
         Singleton = this;
-        _instructions.Add(new Pair("item 3", "item 17"));
+        _instructions.Add(new Pair("slot 3", "slot 17"));
     }
 
     private void Update()
     {
+        if(GameManager.Singleton.win || GameManager.Singleton.lose) { this.enabled = false; }
         if (Camera.main == null) return;
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (selectedItem != null)
@@ -77,7 +78,7 @@ public class Swapper : MonoBehaviour
             {
                 GameManager.Singleton.moves++;
                 (selectedItem.spot, swapItem.spot) = (swapItem.spot, selectedItem.spot);
-                var pair = new Pair(selectedItem.name, swapItem.name);
+                var pair = new Pair(selectedItem.spot.name, swapItem.spot.name);
                 var instructionMatch = false;
                 // _instructions.Any(instruction => instruction.Compare(pair));
                 foreach (var instruction in _instructions.Where(instruction => instruction.Compare(pair)))
@@ -86,7 +87,7 @@ public class Swapper : MonoBehaviour
                     _instructions.Remove(instruction);
                     break;
                 }
-                if (instructionMatch)
+                if (_instructions.Count==0)
                 {
                     Debug.Log("Instruction Matched");
                     GameManager.Singleton.win = true;

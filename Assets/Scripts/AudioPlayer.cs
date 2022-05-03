@@ -23,13 +23,9 @@ public class AudioPlayer : MonoBehaviour
         
         _timer += Time.deltaTime;
         seek.fillAmount = Mathf.Lerp(seek.fillAmount, value , _timer);
-        var _seconds = _source.time;
         
-        if(_seconds ==0)
-        {
-            button.image.sprite = play;
-        }
-
+        
+        
     }
 
     public void PlayInstruction()
